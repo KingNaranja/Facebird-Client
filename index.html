@@ -20,7 +20,22 @@
 
 			<main>
 
-				<div id="userForms"></div>
+				<div id="userForms">
+					<h1 id="feedback"></h1>
+
+					<!-- sign-up -->
+					<form id="sign-up">
+						<fieldset>
+							<legend>Sign-Up</legend>
+							<input type="text" name="credentials[email]" placeholder="Email">
+							<input type="text" name="nickname" placeholder="Nickname (required)">
+							<input type="password" name="credentials[password]" placeholder="Password">
+							<input type="password" name="credentials[password_confirmation]" placeholder="Comfirm Password">
+							<input type="submit" value="Sign-Up">
+						
+						</fieldset>
+					</form>
+				</div>
 
 				<!-- hidden on document ready -->
 				<div id="sideBar"></div>
