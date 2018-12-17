@@ -1,17 +1,67 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Example</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+		<head>
+			<title>FaceBird | The Newest Social Media Platform</title>
+			<meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags-->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+			<!-- Do not add `link` tags-->
+			<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-      <!-- Do not add `script` tags-->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body>
-      <h1>Browser Template</h1>
-    </body>
+			<!-- Do not add `script` tags-->
+			<script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+			<script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+		</head>
+		<body>
+			
+
+			<header id="facebird">
+				
+				<!-- <div id="quail-img"><img src="./public/quail-logo.png" alt="Quaile logo image"></div> -->
+				<h1>FaceBird</h1>
+				<p>The Newest Social Network</p>
+
+			</header>
+
+			<main>
+
+				<div id="userForms">
+					<h1 id="feedback"></h1>
+
+					<!-- sign-up -->
+					<form id="sign-up">
+						<fieldset>
+							<legend>Sign-Up</legend>
+							<input type="text" name="credentials[email]" placeholder="Email">
+							<input type="text" name="nickname" placeholder="Nickname (required)">
+							<input type="password" name="credentials[password]" placeholder="Password">
+							<input type="password" name="credentials[password_confirmation]" placeholder="Comfirm Password">
+							<input type="submit" value="Sign-Up">
+						
+						</fieldset>
+					</form>
+				</div>
+
+				<!-- hidden on document ready -->
+				<div id="sideBar"></div>
+
+				<!-- facebird post components -->
+				<div id="post"></div>
+
+				<div id="feed">
+					
+					<!-- handlebars templating -->
+					<div id="user"></div>
+					<div id="everyone"></div>
+
+					
+				</div>
+
+
+
+
+			</main>
+
+			
+
+		</body>
 </html>
