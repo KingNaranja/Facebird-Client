@@ -1,5 +1,6 @@
 const store = require('../store')
 
+
 // TESTING ui feedback 
 const toggle = (message) => {
     // sets the message to be shown
@@ -30,8 +31,46 @@ const signUpFailure = () => {
 }
 
 
+const signInSuccess = (data) => {
+    // clear form values 
+    $('#sign-in')[0].reset()
+    
+
+    // stores user info 
+    store.user = data.user 
+
+    console.log(data.user) // => user object
+
+    // user login feedback
+    toggle(`${store.user.nickname} signed In Successfully!`)
+
+    // toggle view for online users
+    $('#sign-up').toggle()
+    $('#sign-in').toggle()
+    $('#user-online').toggle()
+    
+    // show changePass/logout modal as well
+	
+
+    
+
+    
+
+}
+
+const signInFailure = () => {
+    // clear form values 
+    $('#sign-in')[0].reset()
+    
+    toggle('Failed to Sign-In! Try Again ?')
+
+}
+
+
  module.exports = {
      toggle, 
      signUpSuccess,
-     signUpFailure
+     signUpFailure,
+     signInSuccess,
+     signInFailure
  }
