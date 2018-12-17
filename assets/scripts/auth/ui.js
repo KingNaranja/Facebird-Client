@@ -1,6 +1,6 @@
 const store = require('../store')
 
-
+// TESTING ui feedback 
 const toggle = (message) => {
     // sets the message to be shown
     $('#feedback').text(message)
