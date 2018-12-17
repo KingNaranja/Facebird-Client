@@ -14,13 +14,10 @@ const onSignUp = function(event){
 
     // get form data
     const data = getFormFields(event.target)
-    // ajax promise
-
-    console.log(data)
+    
 
     api.signUp(data)
         .then(ui.signUpSuccess)
-        
         .catch(ui.signUpFailure)
         
 }
