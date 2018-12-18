@@ -60,5 +60,4 @@ module.exports = {
   deletePostSuccess,
   deletePostFaliure,
   getAllMyPostsSuccess,
-  getAllMyPostsFailure
-}
+  getAllMyPostsFailure}
