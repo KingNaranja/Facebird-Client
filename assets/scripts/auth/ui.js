@@ -68,11 +68,46 @@ const signInFailure = () => {
 
 }
 
+const changePassSuccess = () => {
+    
+    // $('#change-pass-form')[0].reset()
+
+    console.log('Successfully changed password')
+}
+
+const changePassFailure = (error) => {
+    // $('#change-pass-form')[0].reset()
+
+    console.log(error)
+}
+
+
+const signOutSuccess = () => {
+    console.log('You signed out!')
+
+    // return to the first view
+    $('#sign-up').toggle()
+    $('#sign-in').toggle()
+    $('#facebird').toggle()
+    $('#user-online').toggle()
+    // close user-auth modal
+    $('#user-modal').modal('hide')
+
+
+}
+
+const signOutFailure = () => {
+    console.log('You couldnt signed out!')
+}
 
  module.exports = {
      toggle, 
      signUpSuccess,
      signUpFailure,
      signInSuccess,
-     signInFailure
+     signInFailure,
+     changePassSuccess,
+     changePassFailure,
+     signOutSuccess,
+     signOutFailure
  }

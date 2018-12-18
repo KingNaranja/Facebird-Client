@@ -10,6 +10,10 @@
 }
 
 main {
+    input {
+        border-radius: 7px;
+        padding: 7px;
+    }
     #user-online {
         display:none;
         #sideBar {
@@ -59,5 +63,19 @@ button {
     
 }
 button:hover {
-    color:wheat;
+    color:wheat; // change later
+}
+
+#user-modal {
+    text-align: center;
+
+    input {
+        border-radius: 7px;
+        padding: 7px;
+        margin: 5px;
+
+    }
+    #change-password-form{
+        display: none;
+    }
 }
