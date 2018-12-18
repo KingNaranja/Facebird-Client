@@ -40,6 +40,16 @@ const deletePostFaliure = function (apiData) {
   console.log(`you didn't delete a post`)
 }
 
+const getAllMyPostsSuccess = function (apiData) {
+  console.log(apiData)
+  console.log(`you got your posts!`)
+}
+
+const getAllMyPostsFailure = function (apiData) {
+  console.log(apiData)
+  console.log(`you didn't get your posts!`)
+}
+
 module.exports = {
   createPostSuccess,
   createPostFailure,
@@ -48,6 +58,7 @@ module.exports = {
   updatePostSuccess,
   updatePostFailure,
   deletePostSuccess,
-  deletePostFaliure
-
+  deletePostFaliure,
+  getAllMyPostsSuccess,
+  getAllMyPostsFailure
 }
