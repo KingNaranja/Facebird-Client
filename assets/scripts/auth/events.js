@@ -8,6 +8,11 @@ const addEvents =()=>{
     $('#sign-up').on('submit', onSignUp)
     $('#sign-in').on('submit', onSignIn)
 
+    $('#show-auth-modal').on('click',(event)=>{
+        // event.preventDefault()
+        console.log('hi')
+        $('#user-modal').modal('show')
+    })
 
 
 }
