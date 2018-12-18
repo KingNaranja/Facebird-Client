@@ -44,9 +44,20 @@ const deletePost = function (data) {
   })
 }
 
+const getAllMyPosts = (data) => {
+  const userToken = userStore.user.user.token
+  return $.ajax({
+    url: config.apiUrl + '/posts/myPosts',
+    method: 'GET',
+    headers: {Authorization: `Token token=${userToken}`},
+    data
+  })
+}
+
 module.exports = {
   createPost,
   getAllPosts,
   updatePost,
-  deletePost
+  deletePost,
+  getAllMyPosts
 }
