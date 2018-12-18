@@ -31,10 +31,7 @@ const onGetAllPosts = event => {
   event.preventDefault()
   console.log(event)
 
-  const data = getFormFields(event.target)
-  console.log(data)
-
-  api.getAllPosts(data)
+  api.getAllPosts()
     .then(ui.getAllPostsSuccess)
     .catch(ui.getAllPostsFailure)
 }
@@ -67,10 +64,7 @@ const onGetAllMyPosts = function (event) {
   event.preventDefault()
   console.log(event)
 
-  const data = getFormFields(event.target)
-  console.log(data)
-
-  api.getAllMyPosts(data)
+  api.getAllMyPosts()
     .then(ui.getAllMyPostsSuccess)
     .catch(ui.getAllMyPostsFailure)
 }

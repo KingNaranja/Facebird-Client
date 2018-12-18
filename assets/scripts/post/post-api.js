@@ -13,13 +13,12 @@ const createPost = function (data) {
   })
 }
 
-const getAllPosts = (data) => {
+const getAllPosts = () => {
   const userToken = userStore.user.user.token
   return $.ajax({
     url: config.apiUrl + '/posts',
     method: 'GET',
-    headers: {Authorization: `Token token=${userToken}`},
-    data
+    headers: {Authorization: `Token token=${userToken}`}
   })
 }
 
@@ -44,13 +43,12 @@ const deletePost = function (data) {
   })
 }
 
-const getAllMyPosts = (data) => {
+const getAllMyPosts = () => {
   const userToken = userStore.user.user.token
   return $.ajax({
     url: config.apiUrl + '/posts/myPosts',
     method: 'GET',
-    headers: {Authorization: `Token token=${userToken}`},
-    data
+    headers: {Authorization: `Token token=${userToken}`}
   })
 }
 
