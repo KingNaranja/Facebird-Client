@@ -58,12 +58,12 @@
 					
 					<div id="sideBar">
 						<ul class="menu">
-							<li><img class="quail-img" src="./public/quail-logo.png" alt="Quaile logo image"></li>
-							<li class="menu-but">Friends' Posts</li>
-							<li class="menu-but">Change Password/Logout</li>
-							<li class="menu-but">Blah</li>
-							<li class="menu-but">blah</li>
-						</ul>
+							<li><img class="quail-img" src="./public/quail-logo.png" alt="Quail logo image"></li>
+							<li class="menu-but"><button>Friends' Posts</button></li>
+							<li class="menu-but"><button type ='button' id="show-auth-modal">Change Password/Logout</button></li>
+							<li class="menu-but"><button>blah</button></li>
+							<li class="menu-but"><button>blah</button></li>
+						</ul>						
 						
 					</div>
 
@@ -86,6 +86,48 @@
 
 
 			</main>
+
+			<!-- change pass/logout modal -->
+			<div class='modal fade' id='user-modal'>
+					<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="userModalLabel">User Menu</h5>
+							<button type="button" class="close dismiss" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&otimes;</span>
+							</button>
+						</div>
+						<div id='user-menu' class="modal-body">
+							<div id=user-auth-error class='error'></div>
+
+							<form id='change-password-form' class='hidden'>
+								<legend>Change Password</legend>
+								<div>
+								<div>
+									<label>Old Password</label>
+									<div id='old-pass-error' class='error'></div>
+								</div>
+									<input class='pass-form' name='passwords[old]' type='password'>
+								</div>
+								<div class='w-100'></div>
+								<div>
+									<div>
+										<label>New Password</label>
+										<div id='new-pass-error' class='error'></div>
+									</div>
+									<input class='pass-form' name='passwords[new]' type='password'>
+								</div>
+								<input type="submit" value='Confirm'>
+							</form>
+							<button id='launch-change-password' class='btn btn-secondary form-button'>Change Password</button>
+							<button id='sign-out' class='btn btn-secondary form-button'>Sign Out</button>
+						</div>
+						<!-- <div class="modal-footer">
+						<button type="button" class="btn btn-secondary dismiss" data-dismiss="modal">Close</button>
+						</div> -->
+					</div>
+				</div>
+			</div>
 
 			
 

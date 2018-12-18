@@ -52,3 +52,12 @@ main {
 .menu-but {
     font-size: 1.5em;
 }
+
+button {
+    border:none;
+    background-color: inherit;
+    
+}
+button:hover {
+    color:wheat;
+}
