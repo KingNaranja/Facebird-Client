@@ -30,12 +30,24 @@ const updatePostFailure = apiData => {
   console.log(`you didn't update a post!`)
 }
 
+const deletePostSuccess = function (apiData) {
+  console.log(apiData)
+  console.log(`you deleted a post`)
+}
+
+const deletePostFaliure = function (apiData) {
+  console.log(apiData)
+  console.log(`you didn't delete a post`)
+}
+
 module.exports = {
   createPostSuccess,
   createPostFailure,
   getAllPostsSuccess,
   getAllPostsFailure,
   updatePostSuccess,
-  updatePostFailure
+  updatePostFailure,
+  deletePostSuccess,
+  deletePostFaliure
 
 }

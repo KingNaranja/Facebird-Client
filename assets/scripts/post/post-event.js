@@ -5,9 +5,11 @@ const api = require('./post-api.js')
 const ui = require('./post-ui.js')
 
 const addPostEventListeners = function () {
+  // temp event listeners
   $('#new-post').on('submit', onCreatePost)
   $('#get-all-posts').on('submit', onGetAllPosts)
-  $('update-post').on('submit', onUpdatePost)
+  $('#update-post').on('submit', onUpdatePost)
+  $('#delete-post').on('submit', onDeletePost)
 }
 
 const onCreatePost = function (event) {
@@ -39,9 +41,23 @@ const onUpdatePost = event => {
   console.log(event)
 
   const data = getFormFields(event.target)
+  console.log(data)
+
   api.updatePost(data)
     .then(ui.updatePostSuccess)
     .catch(ui.updatePostFailure)
+}
+
+const onDeletePost = function () {
+  event.preventDefault()
+  console.log(event)
+
+  const data = getFormFields(event.target)
+  console.log(data)
+
+  api.deletePost(data)
+    .then(ui.deletePostSuccess)
+    .catch(ui.deletePostFaliure)
 }
 
 module.exports = {
