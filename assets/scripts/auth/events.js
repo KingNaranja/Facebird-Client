@@ -7,13 +7,19 @@ const store = require('../store')
 const addEvents =()=>{
     $('#sign-up').on('submit', onSignUp)
     $('#sign-in').on('submit', onSignIn)
-
+    // auth-modal event 
     $('#show-auth-modal').on('click',(event)=>{
         // event.preventDefault()
         console.log('hi')
         $('#user-modal').modal('show')
     })
+    $('#launch-change-password').on('click', ()=>{
+        $('#change-password-form').toggle()
+    })
+    $('#change-password-form').on('submit', onChangePass)
 
+    $('#sign-out').on('click', onSignOut)
+    
 
 }
 
@@ -42,8 +48,39 @@ const onSignIn = function(event){
         
 }
 
+const onChangePass = (event) => {
+    event.preventDefault()
+
+
+    // get form data
+    const data = getFormFields(event.target)
+    console.log(data)
+
+    api.changePass(data)
+        .then(ui.changePassSuccess)
+        .catch(ui.changePassFailure)
+
+     
+}
+
+const onSignOut = function(){
+    // event.preventDefault()
+
+    // get form data
+    const data = getFormFields(event.target)
+    console.log()
+    
+    api.signOut()
+        .then(ui.signOutSuccess)
+        .catch(ui.signOutFailure)
+        
+}
+
 module.exports = {
     addEvents, 
     onSignUp,
-    onSignIn
+    onSignIn,
+    onChangePass,
+    onSignOut
+
 }
