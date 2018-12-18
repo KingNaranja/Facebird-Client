@@ -47,6 +47,8 @@ const signInSuccess = (data) => {
     // toggle view for online users
     $('#sign-up').toggle()
     $('#sign-in').toggle()
+    $('#facebird').toggle()
+
     $('#user-online').toggle()
     
     // show changePass/logout modal as well

@@ -3,9 +3,52 @@
 @import './colors.scss';
 @import './themes.scss';
 
+// mini css reset
+* {
+    padding: 0px;
+    margin: 0px;
+}
 
 main {
     #user-online {
         display:none;
+        #sideBar {
+            margin:0;
+            padding:0;
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            background: lightblue;
+            top:0;
+            left:0;
+
+            li{
+                display: flex;
+                padding:20px;
+                
+            }
+            li:hover{
+                color:white;
+            }
+
+
+        }
+        #content{
+            margin-left: 250px;
+            #feed {
+                margin: 5px;
+
+            }
+
+        }
     }
+}
+
+.quail-img {
+    width:4.5em;
+    height: 4.5em;
+    margin-left: 3.3em;
+}
+.menu-but {
+    font-size: 1.5em;
 }
