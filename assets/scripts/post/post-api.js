@@ -22,14 +22,15 @@ const getAllPosts = () => {
   })
 }
 
-const updatePost = data => {
+const updatePost = (formData, postId) => {
+  console.log(formData)
+  console.log(postId)
   const userToken = userStore.user.token
-  const id = data.post._id
   return $.ajax({
-    url: config.apiUrl + `/posts/${id}`,
+    url: config.apiUrl + `/posts/${postId}`,
     method: 'PATCH',
     headers: {Authorization: `Token token=${userToken}`},
-    data
+    data: formData
   })
 }
 
@@ -51,10 +52,20 @@ const getAllMyPosts = () => {
   })
 }
 
+const getOnePost = (postId) => {
+  const userToken = userStore.user.token
+  return $.ajax({
+    url: config.apiUrl + `/posts/${postId}`,
+    method: 'GET',
+    headers: {Authorization: `Token token=${userToken}`}
+  })
+}
+
 module.exports = {
   createPost,
   getAllPosts,
   updatePost,
   deletePost,
-  getAllMyPosts
+  getAllMyPosts,
+  getOnePost
 }
