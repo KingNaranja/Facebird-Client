@@ -4,7 +4,7 @@ const config = require('../config.js')
 const userStore = require('../store.js')
 
 const createPost = function (data) {
-  const userToken = userStore.user.user.token
+  const userToken = userStore.user.token
   return $.ajax({
     url: config.apiUrl + '/posts',
     method: 'POST',
@@ -14,7 +14,7 @@ const createPost = function (data) {
 }
 
 const getAllPosts = () => {
-  const userToken = userStore.user.user.token
+  const userToken = userStore.user.token
   return $.ajax({
     url: config.apiUrl + '/posts',
     method: 'GET',
@@ -23,7 +23,7 @@ const getAllPosts = () => {
 }
 
 const updatePost = data => {
-  const userToken = userStore.user.user.token
+  const userToken = userStore.user.token
   const id = data.post._id
   return $.ajax({
     url: config.apiUrl + `/posts/${id}`,
@@ -34,7 +34,7 @@ const updatePost = data => {
 }
 
 const deletePost = function (postId) {
-  const userToken = userStore.user.user.token
+  const userToken = userStore.user.token
   return $.ajax({
     url: config.apiUrl + `/posts/${postId}`,
     method: 'DELETE',
@@ -43,7 +43,7 @@ const deletePost = function (postId) {
 }
 
 const getAllMyPosts = () => {
-  const userToken = userStore.user.user.token
+  const userToken = userStore.user.token
   return $.ajax({
     url: config.apiUrl + '/posts/myPosts',
     method: 'GET',
