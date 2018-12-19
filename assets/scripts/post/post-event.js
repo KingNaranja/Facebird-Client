@@ -70,6 +70,7 @@ const onGetAllMyPosts = function (event) {
 
   api.getAllMyPosts()
     .then(ui.getAllMyPostsSuccess)
+    .then(addPostHandlers)
     .catch(ui.getAllMyPostsFailure)
 }
 

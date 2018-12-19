@@ -47,6 +47,8 @@ const deletePostFaliure = function (apiData) {
 
 const getAllMyPostsSuccess = function (apiData) {
   console.log(apiData)
+  const allMyPosts = allPostsTemplate({posts: apiData.posts})
+  $('#feed').html(allMyPosts)
   console.log(`you got your posts!`)
 }
 
