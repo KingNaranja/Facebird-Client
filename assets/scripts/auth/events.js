@@ -7,7 +7,7 @@ const posts = require('../post/post-event.js')
 
 const addEvents =()=>{
     $('#sign-up').on('submit', onSignUp)
-    $('#sign-in').on('submit', onSignIn)
+  $('#sign-in').on('submit', onSignIn)
     // auth-modal event
     $('#show-auth-modal').on('click',()=>{
         // event.preventDefault()
