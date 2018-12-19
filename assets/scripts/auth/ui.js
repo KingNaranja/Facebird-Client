@@ -69,21 +69,25 @@ const signInFailure = () => {
 }
 
 const changePassSuccess = () => {
-    
     // $('#change-pass-form')[0].reset()
 
-    console.log('Successfully changed password')
+    toggle('Successfully changed password')
+    $('.pass-form').val('')
+    // hides modal
+    $('#user-modal').modal('hide')
 }
 
 const changePassFailure = (error) => {
-    // $('#change-pass-form')[0].reset()
+    // clear password form
+    $('.pass-form').val('')
 
+    $('#changePassResponse').text('Failed to change password')
     console.log(error)
 }
 
 
 const signOutSuccess = () => {
-    console.log('You signed out!')
+    toggle('You signed out!')
 
     // return to the first view
     $('#sign-up').toggle()
@@ -97,7 +101,7 @@ const signOutSuccess = () => {
 }
 
 const signOutFailure = () => {
-    console.log('You couldnt signed out!')
+    toggle('You couldnt signed out!')
 }
 
  module.exports = {
