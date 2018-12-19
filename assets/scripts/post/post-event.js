@@ -6,10 +6,11 @@ const ui = require('./post-ui.js')
 
 const addPostEventListeners = function () {
   // temp event listeners
-  $('#get-all-posts').on('submit', onGetAllPosts)
-  $('#get-all-my-posts').on('submit', onGetAllMyPosts)
+  // $('#get-all-posts').on('submit', onGetAllPosts)
+  // $('#get-all-my-posts').on('submit', onGetAllMyPosts)
   // most event listeners will need to be chained onto the return of
   // posts from the Api (aka, on sign in/get all posts)
+  $('#change-view :checkbox').change(changeFeedView)
 }
 
 const addPostHandlers = function () {
@@ -17,6 +18,31 @@ const addPostHandlers = function () {
   $('.update-post').on('click', onUpdatePost)
   $('.delete-post').on('click', onDeletePost)
 }
+
+let currentFeedView = false
+// 
+const changeFeedView =()=>{
+  // feed contains all users posts after sign-in
+
+  // if my posts arent in the view 
+  if (!currentFeedView) {
+    // add my posts to the feed
+    currentFeedView = true
+    onGetAllMyPosts()
+    // show (toggle) #create-post-form
+    
+  } else {
+    // add all posts to the feed
+    onGetAllPosts()
+    currentFeedView = false
+    // get my last post 
+    // remove #create-post-form
+
+  }
+}
+
+
+
 
 const onCreatePost = function (event) {
   event.preventDefault()
@@ -67,9 +93,8 @@ const onDeletePost = function () {
     .catch(ui.deletePostFaliure)
 }
 
-const onGetAllMyPosts = function (event) {
-  event.preventDefault()
-  console.log(event)
+const onGetAllMyPosts = function () {
+  
 
   api.getAllMyPosts()
     .then(ui.getAllMyPostsSuccess)
@@ -79,5 +104,7 @@ const onGetAllMyPosts = function (event) {
 
 module.exports = {
   addPostEventListeners,
-  onGetAllPosts
+  onGetAllPosts,
+  onGetAllMyPosts,
+  changeFeedView
 }
