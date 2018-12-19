@@ -1,5 +1,7 @@
 'use strict'
 
+const allPostsTemplate = require('../templates/get-plots.handlebars')
+
 const createPostSuccess = function (apiData) {
   console.log(apiData)
   console.log('you created a post!')
@@ -13,6 +15,9 @@ const createPostFailure = function (apiData) {
 const getAllPostsSuccess = apiData => {
   console.log(apiData)
   console.log('you got posts!')
+  const allThePosts = allPostsTemplate({posts: apiData.posts})
+  $('#feed').html(allThePosts)
+  return ''
 }
 
 const getAllPostsFailure = apiData => {

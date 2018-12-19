@@ -33,11 +33,10 @@ const updatePost = data => {
   })
 }
 
-const deletePost = function (data) {
+const deletePost = function (postId) {
   const userToken = userStore.user.user.token
-  const id = data.post._id
   return $.ajax({
-    url: config.apiUrl + `/posts/${id}`,
+    url: config.apiUrl + `/posts/${postId}`,
     method: 'DELETE',
     headers: {Authorization: `Token token=${userToken}`}
   })
