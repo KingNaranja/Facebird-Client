@@ -31,8 +31,11 @@ const onCreatePost = function (event) {
 }
 
 const onGetAllPosts = event => {
-  event.preventDefault()
-  console.log(event)
+  // event will only be truthy when onGetAllPosts is triggered by a button click
+  if (event) { // checks if event is truthy before running prevent default
+    event.preventDefault()
+  }
+  console.log('you got here buddy')
 
   api.getAllPosts()
     .then(ui.getAllPostsSuccess)
@@ -75,5 +78,6 @@ const onGetAllMyPosts = function (event) {
 }
 
 module.exports = {
-  addPostEventListeners
+  addPostEventListeners,
+  onGetAllPosts
 }
