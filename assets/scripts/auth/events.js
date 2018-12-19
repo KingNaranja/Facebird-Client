@@ -8,13 +8,15 @@ const addEvents =()=>{
     $('#sign-up').on('submit', onSignUp)
     $('#sign-in').on('submit', onSignIn)
     // auth-modal event 
-    $('#show-auth-modal').on('click',(event)=>{
+    $('#show-auth-modal').on('click',()=>{
         // event.preventDefault()
         console.log('hi')
         $('#user-modal').modal('show')
     })
     $('#launch-change-password').on('click', ()=>{
         $('#change-password-form').toggle()
+        // clear form response
+        $('#changePassResponse').text('')
     })
     $('#change-password-form').on('submit', onChangePass)
 
