@@ -10,9 +10,12 @@ const addPostEventListeners = function () {
   $('#get-all-my-posts').on('submit', onGetAllMyPosts)
   // most event listeners will need to be chained onto the return of
   // posts from the Api (aka, on sign in/get all posts)
-  $('#new-post').on('submit', onCreatePost)
-  $('#update-post').on('submit', onUpdatePost)
-  $('#delete-post').on('submit', onDeletePost)
+}
+
+const addPostHandlers = function () {
+  $('.new-post').on('click', onCreatePost)
+  $('.update-post').on('click', onUpdatePost)
+  $('.delete-post').on('click', onDeletePost)
 }
 
 const onCreatePost = function (event) {
@@ -33,6 +36,7 @@ const onGetAllPosts = event => {
 
   api.getAllPosts()
     .then(ui.getAllPostsSuccess)
+    .then(addPostHandlers)
     .catch(ui.getAllPostsFailure)
 }
 
@@ -40,6 +44,7 @@ const onUpdatePost = event => {
   event.preventDefault()
   console.log(event)
 
+  // how do we want to display changes to the post?
   const data = getFormFields(event.target)
   console.log(data)
 
@@ -52,10 +57,9 @@ const onDeletePost = function () {
   event.preventDefault()
   console.log(event)
 
-  const data = getFormFields(event.target)
-  console.log(data)
+  const postId = event.target.closest('section').data('id')
 
-  api.deletePost(data)
+  api.deletePost(postId)
     .then(ui.deletePostSuccess)
     .catch(ui.deletePostFaliure)
 }
