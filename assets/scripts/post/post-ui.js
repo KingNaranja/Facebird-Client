@@ -1,6 +1,8 @@
 'use strict'
 
 const allPostsTemplate = require('../templates/get-all-posts.handlebars')
+const allMyPostsTemplate = require('../templates/get-all-my-posts.handlebars')
+const onePostTemplate = require('../templates/get-one-post-form.handlebars')
 
 const createPostSuccess = function (apiData) {
   console.log(apiData)
@@ -28,6 +30,8 @@ const getAllPostsFailure = apiData => {
 const updatePostSuccess = apiData => {
   console.log(apiData)
   console.log('you updated a post!')
+  $('#update-modal').modal('hide')
+  return ''
 }
 
 const updatePostFailure = apiData => {
@@ -47,7 +51,7 @@ const deletePostFaliure = function (apiData) {
 
 const getAllMyPostsSuccess = function (apiData) {
   console.log(apiData)
-  const allMyPosts = allPostsTemplate({posts: apiData.posts})
+  const allMyPosts = allMyPostsTemplate({posts: apiData.posts})
   $('#feed').html(allMyPosts)
   console.log(`you got your posts!`)
 }
@@ -55,6 +59,12 @@ const getAllMyPostsSuccess = function (apiData) {
 const getAllMyPostsFailure = function (apiData) {
   console.log(apiData)
   console.log(`you didn't get your posts!`)
+}
+
+const getOnePostSuccess = function (apiData) {
+  console.log(apiData)
+  const modalContent = onePostTemplate({post: apiData.post})
+  $('#update-modal-body').html(modalContent)
 }
 
 module.exports = {
@@ -67,4 +77,6 @@ module.exports = {
   deletePostSuccess,
   deletePostFaliure,
   getAllMyPostsSuccess,
-  getAllMyPostsFailure}
+  getAllMyPostsFailure,
+  getOnePostSuccess
+}

@@ -15,30 +15,44 @@ const addPostEventListeners = function () {
 
 const addPostHandlers = function () {
   $('.new-post').on('click', onCreatePost)
-  $('.update-post').on('click', onUpdatePost)
+  $('.update-post').on('click', showUpdate)
   $('.delete-post').on('click', onDeletePost)
 }
 
 let currentFeedView = false
-// 
+//
 const changeFeedView =()=>{
   // feed contains all users posts after sign-in
 
-  // if my posts arent in the view 
+  // if my posts arent in the view
   if (!currentFeedView) {
     // add my posts to the feed
     currentFeedView = true
     onGetAllMyPosts()
     // show (toggle) #create-post-form
-    
+
   } else {
     // add all posts to the feed
     onGetAllPosts()
     currentFeedView = false
-    // get my last post 
+    // get my last post
     // remove #create-post-form
 
   }
+}
+
+const addPostUpdateButton = function () {
+  $('#update-text').on('submit', onUpdatePost)
+}
+
+const showUpdate = function (event) {
+  event.preventDefault()
+  const postId = $(event.target).closest('section').data('id')
+  $('#update-modal').modal('show')
+  api.getOnePost(postId)
+    .then(ui.getOnePostSuccess)
+    .then(addPostUpdateButton)
+    .catch()
 }
 
 
@@ -74,28 +88,27 @@ const onUpdatePost = event => {
   console.log(event)
 
   // how do we want to display changes to the post?
-  const data = getFormFields(event.target)
-  console.log(data)
+  const formData = getFormFields(event.target)
+  console.log(formData)
 
-  api.updatePost(data)
+  const postId = $(event.target).closest('section').data('id')
+
+  api.updatePost(formData, postId)
     .then(ui.updatePostSuccess)
+    .then(onGetAllMyPosts)
     .catch(ui.updatePostFailure)
 }
 
 const onDeletePost = function () {
   event.preventDefault()
-  console.log(event)
-
-  const postId = event.target.closest('section').data('id')
-
+  const postId = $(event.target).closest('section').data('id')
   api.deletePost(postId)
     .then(ui.deletePostSuccess)
+    .then(onGetAllMyPosts)
     .catch(ui.deletePostFaliure)
 }
 
 const onGetAllMyPosts = function () {
-  
-
   api.getAllMyPosts()
     .then(ui.getAllMyPostsSuccess)
     .then(addPostHandlers)
