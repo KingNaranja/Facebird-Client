@@ -1,6 +1,6 @@
 'use strict'
 
-const allPostsTemplate = require('../templates/get-plots.handlebars')
+const allPostsTemplate = require('../templates/get-all-posts.handlebars')
 
 const createPostSuccess = function (apiData) {
   console.log(apiData)
