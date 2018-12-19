@@ -1,0 +1,15 @@
+<section data-id={{post._id}} class="post">
+  <div class="post-header">
+    <h4>{{post.owner}}</h4>
+  </div>
+  <div class="post-body">
+    <p>{{post.createdAt}}</p>
+    <form id='update-text'>
+      <input type="text" name="post[text]" type='text' value="{{post.text}}">
+      <div>
+        <input type="submit" value='Confirm'>
+      </div>
+    </form>
+  </div>
+
+</section>
