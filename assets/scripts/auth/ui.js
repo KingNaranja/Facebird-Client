@@ -1,43 +1,44 @@
 const store = require('../store')
+const posts = require('../post/post-event.js')
 
 
-// TESTING ui feedback 
+// TESTING ui feedback
 const toggle = (message) => {
     // sets the message to be shown
     $('#feedback').text(message)
 
-    // hide message after 2 seconds 
+    // hide message after 2 seconds
 	setTimeout(()=>{
 		$('#feedback').toggle()
 		},2000)
 }
 
 const signUpSuccess = () => {
-    // clear form values 
+    // clear form values
     $('#sign-up')[0].reset()
-    
+
     toggle('signed up Successfully!')
 
-    
+
 
 }
 
 const signUpFailure = () => {
-    // clear form values 
+    // clear form values
     $('#sign-up')[0].reset()
-    
+
     toggle('Failed to Sign-Up! Try Again ?')
 
 }
 
 
 const signInSuccess = (data) => {
-    // clear form values 
+    // clear form values
     $('#sign-in')[0].reset()
-    
 
-    // stores user info 
-    store.user = data.user 
+
+    // stores user info
+    store.user = data.user
 
     console.log(data.user) // => user object
 
@@ -50,20 +51,22 @@ const signInSuccess = (data) => {
     $('#facebird').toggle()
 
     $('#user-online').toggle()
-    
+
+    return ''
+
     // show changePass/logout modal as well
-	
 
-    
 
-    
+
+
+
 
 }
 
 const signInFailure = () => {
-    // clear form values 
+    // clear form values
     $('#sign-in')[0].reset()
-    
+
     toggle('Failed to Sign-In! Try Again ?')
 
 }
@@ -105,7 +108,7 @@ const signOutFailure = () => {
 }
 
  module.exports = {
-     toggle, 
+     toggle,
      signUpSuccess,
      signUpFailure,
      signInSuccess,
