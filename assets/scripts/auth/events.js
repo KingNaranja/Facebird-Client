@@ -48,6 +48,7 @@ const onSignIn = function(event){
     api.signIn(data)
         .then(ui.signInSuccess)
         .then(posts.onGetAllPosts)
+        // .then(posts.onGetLatestPost)
         .catch(ui.signInFailure)
 
 }
