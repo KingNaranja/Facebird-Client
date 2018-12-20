@@ -62,15 +62,16 @@
 					<div id="sideBar">
 						<ul class="menu">
 							<li><img class="quail-img" src="./public/quail-logo.png" alt="Quail logo image"></li>
-							<li class="menu-but"><button>Friends' Posts</button></li>
+							<!-- <li class="menu-but"><button>Friends' Posts</button></li> -->
 							<li class="menu-but"><button type ='button' id="show-auth-modal">Change Password/Logout</button></li>
-							<li class="menu-but" >
+              <li class="menu-item">Switch View</li>
+							<li class="menu-but">
 								<label id="change-view" class="switch">
 									<input type="checkbox">
 									<span class="slider round"></span>
 								</label>
 							</li>
-							<li class="menu-but"><button>blah</button></li>
+							<!-- <li class="menu-but"><button>blah</button></li> -->
 						</ul>
 
 					</div>
@@ -82,15 +83,15 @@
 							<div id="create-post-container">
 
 									<form id="new-post">
-										<legend>What's is on your mind?</legend>
+										<legend>What's on your mind?</legend>
 										<input type="text" name="post[text]" type='text' placeholder="Maybe it needs more caramel?">
-										<input id="create-post-btn"type="submit" value='Confirm'>
+										<input class='align-self-center' id="create-post-btn"type="submit" value='Confirm'>
 
 									</form>
 							</div>
 
 						</div>
-
+            <h4>Feed</h4>
 						<div id="feed">
 							<!-- handlebars templating -->
 

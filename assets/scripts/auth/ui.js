@@ -96,11 +96,14 @@ const signOutSuccess = () => {
     // close user-auth modal
     $('#user-modal').modal('hide')
 
+    store.user = ''
 
 }
 
 const signOutFailure = () => {
     showToast('signout-fail', 'ui')
+
+    store.user = ''
 }
 
  module.exports = {
