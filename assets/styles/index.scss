@@ -45,14 +45,14 @@ main {
                   display: none;
                   text-align: center;
                   form {
-                      margin-left: 100px;
+                      // margin-left: 100px;
                       padding: 30px;
                       display: flex;
                       flex-direction: column;
                       align-content: space-between;
                       #create-post-btn {
                           margin-top:15px;
-                          margin-left: 260px;
+                          // margin-left: 260px;
                           width: 25vw;
 
                       }
@@ -74,6 +74,10 @@ main {
     margin-left: 3.3em;
 }
 .menu-but {
+    font-size: 1.5em;
+}
+
+.menu-item {
     font-size: 1.5em;
 }
 
@@ -108,14 +112,14 @@ button:hover {
     width: 60px;
     height: 34px;
   }
-  
+
   /* Hide default HTML checkbox */
   .switch input {
     opacity: 0;
     width: 0;
     height: 0;
   }
-  
+
   /* The slider */
   .slider {
     position: absolute;
@@ -128,7 +132,7 @@ button:hover {
     -webkit-transition: .4s;
     transition: .4s;
   }
-  
+
   .slider:before {
     position: absolute;
     content: "";
@@ -140,26 +144,26 @@ button:hover {
     -webkit-transition: .4s;
     transition: .4s;
   }
-  
+
   input:checked + .slider {
     background-color: #2196F3;
   }
-  
+
   input:focus + .slider {
     box-shadow: 0 0 1px #2196F3;
   }
-  
+
   input:checked + .slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
   }
-  
+
   /* Rounded sliders */
   .slider.round {
     border-radius: 34px;
   }
-  
+
   .slider.round:before {
     border-radius: 50%;
   }

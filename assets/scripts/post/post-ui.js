@@ -10,6 +10,8 @@ const myLatestPostTemplate = require('../templates/get-my-latest-post.handlebars
 const createPostSuccess = function (apiData) {
   console.log(apiData)
   showToast('createpost-pass', 'post')
+  // $('#new-post').val('')
+  $('#new-post')[0].reset()
 }
 
 const createPostFailure = function (apiData) {
