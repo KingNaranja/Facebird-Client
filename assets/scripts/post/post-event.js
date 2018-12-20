@@ -12,13 +12,14 @@ const addPostEventListeners = function () {
   // posts from the Api (aka, on sign in/get all posts)
   $('#change-view :checkbox').change(changeFeedView)
   $('#new-post').on('submit', onCreatePost)
-  
+
 }
 
 const addPostHandlers = function () {
- 
+
   $('.update-post').on('click', showUpdate)
   $('.delete-post').on('click', onDeletePost)
+  return ''
 }
 
 let currentFeedView = false
@@ -26,13 +27,15 @@ let currentFeedView = false
 const changeFeedView =()=>{
   // feed contains all users posts after sign-in
   $('#create-post-container').toggle()
+  $('#recent-post-container').toggle()
   // if my posts arent in the view
   if (!currentFeedView) {
     // add my posts to the feed
     currentFeedView = true
     onGetAllMyPosts()
+    // onGetLatestPost()
     // show (toggle) #create-post-form
-    
+
 
   } else {
     // add all posts to the feed
@@ -40,7 +43,7 @@ const changeFeedView =()=>{
     currentFeedView = false
     // get my last post
     // remove #create-post-form
-    
+
   }
 }
 
@@ -58,9 +61,6 @@ const showUpdate = function (event) {
     .catch()
 }
 
-
-
-
 const onCreatePost = function (event) {
   event.preventDefault()
   console.log(event)
@@ -74,6 +74,16 @@ const onCreatePost = function (event) {
     .catch(ui.createPostFailure)
 }
 
+const onGetLatestPost = function () {
+  console.log('we are here')
+  if (event) { // checks if event is truthy before running prevent default
+    event.preventDefault()
+  }
+  api.getLatestPost()
+    .then(ui.getLatestPostSuccess)
+    .catch(ui.getLatestPostFailure)
+}
+
 const onGetAllPosts = event => {
   // event will only be truthy when onGetAllPosts is triggered by a button click
   if (event) { // checks if event is truthy before running prevent default
@@ -85,6 +95,9 @@ const onGetAllPosts = event => {
     .then(ui.getAllPostsSuccess)
     .then(addPostHandlers)
     .catch(ui.getAllPostsFailure)
+
+  onGetLatestPost()
+  return ''
 }
 
 const onUpdatePost = event => {
@@ -101,6 +114,8 @@ const onUpdatePost = event => {
     .then(ui.updatePostSuccess)
     .then(onGetAllMyPosts)
     .catch(ui.updatePostFailure)
+
+  onGetLatestPost()
 }
 
 const onDeletePost = function () {
@@ -110,6 +125,8 @@ const onDeletePost = function () {
     .then(ui.deletePostSuccess)
     .then(onGetAllMyPosts)
     .catch(ui.deletePostFaliure)
+
+  onGetLatestPost()
 }
 
 const onGetAllMyPosts = function () {

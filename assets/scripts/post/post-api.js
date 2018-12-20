@@ -22,6 +22,15 @@ const getAllPosts = () => {
   })
 }
 
+const getLatestPost = () => {
+  const userToken = userStore.user.token
+  return $.ajax({
+    url: config.apiUrl + '/posts/myLatestPost',
+    method: 'GET',
+    headers: {Authorization: `Token token=${userToken}`}
+  })
+}
+
 const updatePost = (formData, postId) => {
   console.log(formData)
   console.log(postId)
@@ -67,5 +76,6 @@ module.exports = {
   updatePost,
   deletePost,
   getAllMyPosts,
-  getOnePost
+  getOnePost,
+  getLatestPost
 }

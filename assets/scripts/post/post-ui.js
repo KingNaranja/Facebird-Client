@@ -5,6 +5,7 @@ const showToast = require('../toastr/toasts')
 const allPostsTemplate = require('../templates/get-all-posts.handlebars')
 const allMyPostsTemplate = require('../templates/get-all-my-posts.handlebars')
 const onePostTemplate = require('../templates/get-one-post-form.handlebars')
+const myLatestPostTemplate = require('../templates/get-my-latest-post.handlebars')
 
 const createPostSuccess = function (apiData) {
   console.log(apiData)
@@ -14,13 +15,11 @@ const createPostSuccess = function (apiData) {
 const createPostFailure = function (apiData) {
   console.log(apiData)
   showToast('createpost-fail', 'post')
-
 }
 
 const getAllPostsSuccess = apiData => {
   console.log(apiData)
   // showToast('allposts-pass', 'post')
-
 
   const allThePosts = allPostsTemplate({posts: apiData.posts})
   $('#feed').html(allThePosts)
@@ -30,6 +29,17 @@ const getAllPostsSuccess = apiData => {
 const getAllPostsFailure = apiData => {
   console.log(apiData)
   showToast('allposts-fail', 'post')
+}
+
+const getLatestPostSuccess = function (apiData) {
+  console.log(apiData)
+  const latestPost = myLatestPostTemplate({post: apiData.post})
+  $('#recent-post-container').html(latestPost)
+  return ''
+}
+
+const getLatestPostFailure = function () {
+  console.log('you failed')
 }
 
 const updatePostSuccess = apiData => {
@@ -85,5 +95,7 @@ module.exports = {
   deletePostFaliure,
   getAllMyPostsSuccess,
   getAllMyPostsFailure,
-  getOnePostSuccess
+  getOnePostSuccess,
+  getLatestPostSuccess,
+  getLatestPostFailure
 }
