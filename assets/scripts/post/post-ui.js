@@ -1,22 +1,27 @@
 'use strict'
 
+const showToast = require('../toastr/toasts')
+
 const allPostsTemplate = require('../templates/get-all-posts.handlebars')
 const allMyPostsTemplate = require('../templates/get-all-my-posts.handlebars')
 const onePostTemplate = require('../templates/get-one-post-form.handlebars')
 
 const createPostSuccess = function (apiData) {
   console.log(apiData)
-  console.log('you created a post!')
+  showToast('createpost-pass', 'post')
 }
 
 const createPostFailure = function (apiData) {
   console.log(apiData)
-  console.log(`you didn't create a post!`)
+  showToast('createpost-fail', 'post')
+
 }
 
 const getAllPostsSuccess = apiData => {
   console.log(apiData)
-  console.log('you got posts!')
+  showToast('allposts-pass', 'post')
+
+
   const allThePosts = allPostsTemplate({posts: apiData.posts})
   $('#feed').html(allThePosts)
   return ''
@@ -24,12 +29,13 @@ const getAllPostsSuccess = apiData => {
 
 const getAllPostsFailure = apiData => {
   console.log(apiData)
-  console.log(`you didn't get posts`)
+  showToast('allposts-fail', 'post')
 }
 
 const updatePostSuccess = apiData => {
   console.log(apiData)
-  console.log('you updated a post!')
+  showToast('updatepost-pass', 'post')
+
   $('#update-modal').modal('hide')
   return ''
 }
@@ -37,28 +43,29 @@ const updatePostSuccess = apiData => {
 const updatePostFailure = apiData => {
   console.log(apiData)
   console.log(`you didn't update a post!`)
+  showToast('updatepost-fail', 'post')
 }
 
 const deletePostSuccess = function (apiData) {
   console.log(apiData)
-  console.log(`you deleted a post`)
+  showToast('deletepost-pass', 'post')
 }
 
 const deletePostFaliure = function (apiData) {
   console.log(apiData)
-  console.log(`you didn't delete a post`)
+  showToast('deletepost-fail', 'post')
 }
 
 const getAllMyPostsSuccess = function (apiData) {
   console.log(apiData)
   const allMyPosts = allMyPostsTemplate({posts: apiData.posts})
   $('#feed').html(allMyPosts)
-  console.log(`you got your posts!`)
+  showToast('allmyposts-pass', 'post')
 }
 
 const getAllMyPostsFailure = function (apiData) {
   console.log(apiData)
-  console.log(`you didn't get your posts!`)
+  showToast('allmyposts-fail', 'post')
 }
 
 const getOnePostSuccess = function (apiData) {

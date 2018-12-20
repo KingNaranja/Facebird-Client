@@ -11,7 +11,7 @@ const signUpSuccess = () => {
     // clear form values
     $('#sign-up')[0].reset()
 
-    showToast('signup-pass')
+    showToast('signup-pass','ui')
 
 
 
@@ -21,7 +21,7 @@ const signUpFailure = () => {
     // clear form values
     $('#sign-up')[0].reset()
 
-    showToast('signup-fail')
+    showToast('signup-fail', 'ui')
 
 }
 
@@ -37,7 +37,7 @@ const signInSuccess = (data) => {
     console.log(data.user) // => user object
 
     // user login feedback
-    showToast('signin-pass')
+    showToast('signin-pass', 'ui')
 
 
     // toggle view for online users
@@ -62,14 +62,14 @@ const signInFailure = () => {
     // clear form values
     $('#sign-in')[0].reset()
 
-    showToast('signin-fail')
+    showToast('signin-fail', 'ui')
 
 }
 
 const changePassSuccess = () => {
     // $('#change-pass-form')[0].reset()
 
-    showToast('changepass-success')
+    showToast('changepass-success', 'ui')
 
     $('.pass-form').val('')
     // hides modal
@@ -86,7 +86,7 @@ const changePassFailure = (error) => {
 
 
 const signOutSuccess = () => {
-    showToast('signout-pass')
+    showToast('signout-pass', 'ui')
 
     // return to the first view
     $('#sign-up').toggle()
@@ -100,7 +100,7 @@ const signOutSuccess = () => {
 }
 
 const signOutFailure = () => {
-    showToast('signout-fail')
+    showToast('signout-fail', 'ui')
 }
 
  module.exports = {
