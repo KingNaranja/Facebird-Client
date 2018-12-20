@@ -80,7 +80,7 @@ const changePassFailure = (error) => {
     // clear password form
     $('.pass-form').val('')
 
-    showToast('changepass-fail')
+    showToast('changepass-fail', 'ui')
     console.log(error)
 }
 
