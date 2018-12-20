@@ -20,20 +20,48 @@ const uiToasts = {
 }
 
 
+const postToasts = {
+    'createpost-pass': new Toast('success', 'toast-top-right', 'Created a post!'),
+    'createpost-fail': new Toast('warning', 'toast-top-right', 'Failed to create post!'),
 
-function showToast(action) {
+    'allposts-pass':new Toast('info', 'toast-top-right', 'Loading all posts...'),
+    'allposts-fail':new Toast('warning', 'toast-top-right', 'Failed to laod all posts!'),
+
+    'updatepost-pass':new Toast('info', 'toast-top-right', 'Updating post...'),
+    'updatepost-fail':new Toast('warning', 'toast-top-right', 'Failed to update your post!'),
+
+    'deletepost-pass':new Toast('success', 'toast-top-right', 'Removing your post..module.'),
+    'deletepost-fail':new Toast('warning', 'toast-top-right', 'Failed to remove your post!'),
+    
+    'allmyposts-pass':new Toast('info', 'toast-top-right', 'Loading all of your posts...'),
+    'allmyposts-fail':new Toast('warning', 'toast-top-right', 'Failed to load your posts!')
+
+}
+
+
+function showToast(action, event) {
+    // configure all toastr timeouts 
     toastr.options.positionClass = 'toast-top-full-width';
     toastr.options.extendedTimeOut = 0; //1000;
     toastr.options.timeOut = 1000;
     toastr.options.fadeOut = 250;
     toastr.options.fadeIn = 250;
 
-
-
-    const toast = uiToasts[action];
-    toastr.options.positionClass = toast.css
-    toastr[toast.type](toast.msg)
+    // find and display correct Toaster based on event param
+    switch (event){
+        case 'ui':
+            const uiToast = uiToasts[action];
+            toastr.options.positionClass = uiToast.css
+            toastr[uiToast.type](uiToast.msg)
+            break
+        case 'post': 
+            const postToast = postToasts[action];
+            toastr.options.positionClass = postToast.css
+            toastr[postToast.type](postToast.msg)
+            break   
     
+    }
+
     
 }
 
