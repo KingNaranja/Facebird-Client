@@ -25,22 +25,24 @@ const postToasts = {
     'createpost-fail': new Toast('warning', 'toast-top-right', 'Failed to create post!'),
 
     'allposts-pass':new Toast('info', 'toast-top-right', 'Loading all posts...'),
-    'allposts-fail':new Toast('warning', 'toast-top-right', 'Failed to laod all posts!'),
+    'allposts-fail':new Toast('warning', 'toast-top-right', 'Failed to load all posts!'),
 
     'updatepost-pass':new Toast('info', 'toast-top-right', 'Updating post...'),
     'updatepost-fail':new Toast('warning', 'toast-top-right', 'Failed to update your post!'),
 
     'deletepost-pass':new Toast('success', 'toast-top-right', 'Removing your post...'),
     'deletepost-fail':new Toast('warning', 'toast-top-right', 'Failed to remove your post!'),
-    
+
     'allmyposts-pass':new Toast('info', 'toast-top-right', 'Loading all of your posts...'),
-    'allmyposts-fail':new Toast('warning', 'toast-top-right', 'Failed to load your posts!')
+    'allmyposts-fail':new Toast('warning', 'toast-top-right', 'Failed to load your posts!'),
+    'mylatestpost-success':new Toast('success', 'toast-top-right', 'you did it'),
+    'mylatestpost-fail':new Toast('warning', 'toast-top-right', 'Failed to load your latest post')
 
 }
 
 
 function showToast(action, event) {
-    // configure all toastr timeouts 
+    // configure all toastr timeouts
     toastr.options.positionClass = 'toast-top-full-width';
     toastr.options.extendedTimeOut = 0; //1000;
     toastr.options.timeOut = 1000;
@@ -54,15 +56,15 @@ function showToast(action, event) {
             toastr.options.positionClass = uiToast.css
             toastr[uiToast.type](uiToast.msg)
             break
-        case 'post': 
+        case 'post':
             const postToast = postToasts[action];
             toastr.options.positionClass = postToast.css
             toastr[postToast.type](postToast.msg)
-            break   
-    
+            break
+
     }
 
-    
+
 }
 
 module.exports = showToast
