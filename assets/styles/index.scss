@@ -44,6 +44,23 @@ main {
             margin-left: 250px;
             #top-feed-item {
               background: lightblue;
+              #create-post-container{
+                  display: none;
+                  text-align: center;
+                  form {
+                      margin-left: 100px;
+                      padding: 30px;
+                      display: flex;
+                      flex-direction: column;
+                      align-content: space-between;
+                      #create-post-btn {
+                          margin-top:15px;
+                          margin-left: 260px;
+                          width: 25vw;
+
+                      }
+                  }
+              }
             }
             #feed {
                 margin: 5px;
@@ -86,6 +103,7 @@ button:hover {
     }
 }
 
+// menu toggle btn css
 .switch {
     margin-left: 3.3em;
     position: relative;

@@ -11,10 +11,12 @@ const addPostEventListeners = function () {
   // most event listeners will need to be chained onto the return of
   // posts from the Api (aka, on sign in/get all posts)
   $('#change-view :checkbox').change(changeFeedView)
+  $('#new-post').on('submit', onCreatePost)
+  
 }
 
 const addPostHandlers = function () {
-  $('.new-post').on('click', onCreatePost)
+ 
   $('.update-post').on('click', showUpdate)
   $('.delete-post').on('click', onDeletePost)
 }
@@ -23,13 +25,14 @@ let currentFeedView = false
 //
 const changeFeedView =()=>{
   // feed contains all users posts after sign-in
-
+  $('#create-post-container').toggle()
   // if my posts arent in the view
   if (!currentFeedView) {
     // add my posts to the feed
     currentFeedView = true
     onGetAllMyPosts()
     // show (toggle) #create-post-form
+    
 
   } else {
     // add all posts to the feed
@@ -37,7 +40,7 @@ const changeFeedView =()=>{
     currentFeedView = false
     // get my last post
     // remove #create-post-form
-
+    
   }
 }
 
@@ -67,6 +70,7 @@ const onCreatePost = function (event) {
 
   api.createPost(data)
     .then(ui.createPostSuccess)
+    .then(onGetAllMyPosts)
     .catch(ui.createPostFailure)
 }
 
