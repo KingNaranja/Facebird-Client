@@ -75,13 +75,23 @@
 
 					<!-- facebird post components -->
 					<div id="content">
-						<div id="top-feed-item">this is the top item</div>
+						<div id="top-feed-item">
+
+							<div id="create-post-container">
+
+									<form id="new-post">
+										<legend>What's is on your mind?</legend>
+										<input type="text" name="post[text]" type='text' placeholder="Maybe it needs more caramel?">
+										<input id="create-post-btn"type="submit" value='Confirm'>
+									
+									</form>
+							</div>
+							
+						</div>
 
 						<div id="feed">
-							<h1>feed items</h1>
 							<!-- handlebars templating -->
-							<div id="user"></div>
-							<div id="everyone"></div>
+							
 
 						</div>
 					</div>
