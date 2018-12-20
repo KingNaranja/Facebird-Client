@@ -1,23 +1,17 @@
 const store = require('../store')
 const posts = require('../post/post-event.js')
+const showToast = require('../toastr/toasts')
 
 
 // TESTING ui feedback
-const toggle = (message) => {
-    // sets the message to be shown
-    $('#feedback').text(message)
-
-    // hide message after 2 seconds
-	setTimeout(()=>{
-		$('#feedback').toggle()
-		},2000)
-}
+// showToast requires ui action as param to display
+// feedback to the user
 
 const signUpSuccess = () => {
     // clear form values
     $('#sign-up')[0].reset()
 
-    toggle('signed up Successfully!')
+    showToast('signup-pass')
 
 
 
@@ -27,7 +21,7 @@ const signUpFailure = () => {
     // clear form values
     $('#sign-up')[0].reset()
 
-    toggle('Failed to Sign-Up! Try Again ?')
+    showToast('signup-fail')
 
 }
 
@@ -43,7 +37,8 @@ const signInSuccess = (data) => {
     console.log(data.user) // => user object
 
     // user login feedback
-    toggle(`${store.user.nickname} signed In Successfully!`)
+    showToast('signin-pass')
+
 
     // toggle view for online users
     $('#sign-up').toggle()
@@ -67,14 +62,15 @@ const signInFailure = () => {
     // clear form values
     $('#sign-in')[0].reset()
 
-    toggle('Failed to Sign-In! Try Again ?')
+    showToast('signin-fail')
 
 }
 
 const changePassSuccess = () => {
     // $('#change-pass-form')[0].reset()
 
-    toggle('Successfully changed password')
+    showToast('changepass-success')
+
     $('.pass-form').val('')
     // hides modal
     $('#user-modal').modal('hide')
@@ -90,7 +86,7 @@ const changePassFailure = (error) => {
 
 
 const signOutSuccess = () => {
-    toggle('You signed out!')
+    showToast('signout-pass')
 
     // return to the first view
     $('#sign-up').toggle()
@@ -104,11 +100,10 @@ const signOutSuccess = () => {
 }
 
 const signOutFailure = () => {
-    toggle('You couldnt signed out!')
+    showToast('signout-fail')
 }
 
  module.exports = {
-     toggle,
      signUpSuccess,
      signUpFailure,
      signInSuccess,
