@@ -11,7 +11,13 @@ Links to Facebird deployed sites:
   Facebird-Api: https://evening-waters-25240.herokuapp.com
 
 
-#List of technologies used
+#List of technologies used:
+  -html
+  -javascript
+  -css
+  -ajax
+  -json
+  
 
 
 #List unsolved problems which would be fixed in future iterations
