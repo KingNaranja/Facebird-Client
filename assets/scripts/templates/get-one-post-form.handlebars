@@ -3,7 +3,7 @@
     <h4>{{post.owner.nickname}}</h4>
   </div>
   <div class="post-body">
-    <p>{{post.createdAt}}</p>
+    <p>{{limit post.createdAt 10}}</p>
     <form id='update-text'>
       <input type="text" name="post[text]" type='text' value="{{post.text}}">
       <div>

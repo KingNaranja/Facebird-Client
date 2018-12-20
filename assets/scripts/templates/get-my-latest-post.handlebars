@@ -4,7 +4,7 @@
     <h4>{{post.owner.nickname }}</h4>
   </div>
   <div class="post-body">
-    <p>{{post.createdAt}}</p>
+    <p>{{limit post.createdAt 10}}</p>
     <h6>{{post.text}}</h6>
   </div>
   <div>
