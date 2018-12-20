@@ -30,7 +30,7 @@ const postToasts = {
     'updatepost-pass':new Toast('info', 'toast-top-right', 'Updating post...'),
     'updatepost-fail':new Toast('warning', 'toast-top-right', 'Failed to update your post!'),
 
-    'deletepost-pass':new Toast('success', 'toast-top-right', 'Removing your post..module.'),
+    'deletepost-pass':new Toast('success', 'toast-top-right', 'Removing your post...'),
     'deletepost-fail':new Toast('warning', 'toast-top-right', 'Failed to remove your post!'),
     
     'allmyposts-pass':new Toast('info', 'toast-top-right', 'Loading all of your posts...'),

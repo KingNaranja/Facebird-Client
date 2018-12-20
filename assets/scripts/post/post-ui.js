@@ -19,7 +19,7 @@ const createPostFailure = function (apiData) {
 
 const getAllPostsSuccess = apiData => {
   console.log(apiData)
-  showToast('allposts-pass', 'post')
+  // showToast('allposts-pass', 'post')
 
 
   const allThePosts = allPostsTemplate({posts: apiData.posts})
@@ -60,7 +60,7 @@ const getAllMyPostsSuccess = function (apiData) {
   console.log(apiData)
   const allMyPosts = allMyPostsTemplate({posts: apiData.posts})
   $('#feed').html(allMyPosts)
-  showToast('allmyposts-pass', 'post')
+  // showToast('allmyposts-pass', 'post')
 }
 
 const getAllMyPostsFailure = function (apiData) {
