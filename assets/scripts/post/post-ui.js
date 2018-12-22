@@ -35,8 +35,10 @@ const getAllPostsFailure = apiData => {
 
 const getLatestPostSuccess = function (apiData) {
   console.log(apiData)
-  const latestPost = myLatestPostTemplate({post: apiData.post})
-  $('#recent-post-container').html(latestPost)
+  if (apiData) {
+    const latestPost = myLatestPostTemplate({post: apiData.post})
+    $('#recent-post-container').html(latestPost)
+  }
   // showToast('mylatestpost-success', 'post')
   return ''
 }
