@@ -1,4 +1,5 @@
 // const store = require('../store')
+const toastr = require('toastr')
 
 function Toast(type, css, msg) {
     this.type = type;
