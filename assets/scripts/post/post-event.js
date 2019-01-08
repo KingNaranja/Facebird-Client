@@ -12,19 +12,17 @@ const addPostEventListeners = function () {
   // posts from the Api (aka, on sign in/get all posts)
   $('#change-view :checkbox').change(changeFeedView)
   $('#new-post').on('submit', onCreatePost)
-
 }
 
 const addPostHandlers = function () {
-
   $('.update-post').on('click', showUpdate)
   $('.delete-post').on('click', onDeletePost)
   return ''
 }
 
 let currentFeedView = false
-//
-const changeFeedView =()=>{
+
+const changeFeedView = () => {
   // feed contains all users posts after sign-in
   $('#create-post-container').toggle()
   $('#recent-post-container').toggle()
@@ -35,15 +33,12 @@ const changeFeedView =()=>{
     onGetAllMyPosts()
     // onGetLatestPost()
     // show (toggle) #create-post-form
-
-
   } else {
     // add all posts to the feed
     onGetAllPosts()
     currentFeedView = false
     // get my last post
     // remove #create-post-form
-
   }
 }
 
@@ -63,10 +58,8 @@ const showUpdate = function (event) {
 
 const onCreatePost = function (event) {
   event.preventDefault()
-  console.log(event)
 
   const data = getFormFields(event.target)
-  console.log(data)
 
   api.createPost(data)
     .then(ui.createPostSuccess)
@@ -75,7 +68,6 @@ const onCreatePost = function (event) {
 }
 
 const onGetLatestPost = function () {
-  console.log('we are here')
   if (event) { // checks if event is truthy before running prevent default
     event.preventDefault()
   }
@@ -89,7 +81,6 @@ const onGetAllPosts = event => {
   if (event) { // checks if event is truthy before running prevent default
     event.preventDefault()
   }
-  console.log('you got here buddy')
 
   api.getAllPosts()
     .then(ui.getAllPostsSuccess)
@@ -102,11 +93,9 @@ const onGetAllPosts = event => {
 
 const onUpdatePost = event => {
   event.preventDefault()
-  console.log(event)
 
   // how do we want to display changes to the post?
   const formData = getFormFields(event.target)
-  console.log(formData)
 
   const postId = $(event.target).closest('section').data('id')
 
@@ -120,6 +109,7 @@ const onUpdatePost = event => {
 
 const onDeletePost = function () {
   event.preventDefault()
+
   const postId = $(event.target).closest('section').data('id')
   api.deletePost(postId)
     .then(ui.deletePostSuccess)

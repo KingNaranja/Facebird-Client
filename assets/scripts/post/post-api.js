@@ -32,8 +32,6 @@ const getLatestPost = () => {
 }
 
 const updatePost = (formData, postId) => {
-  console.log(formData)
-  console.log(postId)
   const userToken = userStore.user.token
   return $.ajax({
     url: config.apiUrl + `/posts/${postId}`,

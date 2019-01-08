@@ -1,118 +1,96 @@
 const store = require('../store')
-const posts = require('../post/post-event.js')
+// const posts = require('../post/post-event.js')
 const showToast = require('../toastr/toasts')
-
 
 // TESTING ui feedback
 // showToast requires ui action as param to display
 // feedback to the user
 
 const signUpSuccess = () => {
-    // clear form values
-    $('#sign-up')[0].reset()
+  // clear form values
+  $('#sign-up')[0].reset()
 
-    showToast('signup-pass','ui')
-
-
-
+  showToast('signup-pass', 'ui')
 }
 
 const signUpFailure = () => {
-    // clear form values
-    $('#sign-up')[0].reset()
+  // clear form values
+  $('#sign-up')[0].reset()
 
-    showToast('signup-fail', 'ui')
-
+  showToast('signup-fail', 'ui')
 }
 
-
 const signInSuccess = (data) => {
-    // clear form values
-    $('#sign-in')[0].reset()
+  // clear form values
+  $('#sign-in')[0].reset()
 
+  // stores user info
+  store.user = data.user
 
-    // stores user info
-    store.user = data.user
+  // user login feedback
+  showToast('signin-pass', 'ui')
 
-    console.log(data.user) // => user object
+  // toggle view for online users
+  $('#sign-up').toggle()
+  $('#sign-in').toggle()
+  $('#facebird').toggle()
 
-    // user login feedback
-    showToast('signin-pass', 'ui')
+  $('#user-online').toggle()
 
-
-    // toggle view for online users
-    $('#sign-up').toggle()
-    $('#sign-in').toggle()
-    $('#facebird').toggle()
-
-    $('#user-online').toggle()
-
-    return ''
-
-    // show changePass/logout modal as well
-
-
-
-
-
-
+  return ''
 }
 
 const signInFailure = () => {
-    // clear form values
-    $('#sign-in')[0].reset()
+  // clear form values
+  $('#sign-in')[0].reset()
 
-    showToast('signin-fail', 'ui')
-
+  showToast('signin-fail', 'ui')
 }
 
 const changePassSuccess = () => {
-    // $('#change-pass-form')[0].reset()
+  // $('#change-pass-form')[0].reset()
 
-    showToast('changepass-success', 'ui')
+  showToast('changepass-success', 'ui')
 
-    $('.pass-form').val('')
-    // hides modal
-    $('#user-modal').modal('hide')
+  $('.pass-form').val('')
+  // hides modal
+  $('#user-modal').modal('hide')
 }
 
-const changePassFailure = (error) => {
-    // clear password form
-    $('.pass-form').val('')
+const changePassFailure = () => {
+  // clear password form
+  $('.pass-form').val('')
 
-    showToast('changepass-fail', 'ui')
-    console.log(error)
+  showToast('changepass-fail', 'ui')
 }
-
 
 const signOutSuccess = () => {
-    showToast('signout-pass', 'ui')
+  showToast('signout-pass', 'ui')
 
-    // return to the first view
-    $('#sign-up').toggle()
-    $('#sign-in').toggle()
-    $('#facebird').toggle()
-    $('#user-online').toggle()
-    // close user-auth modal
-    $('#user-modal').modal('hide')
+  // return to the first view
+  $('#sign-up').toggle()
+  $('#sign-in').toggle()
+  $('#facebird').toggle()
+  $('#user-online').toggle()
+  // close user-auth modal
+  $('#user-modal').modal('hide')
 
-    store.user = ''
-
+  store.user = ''
 }
 
 const signOutFailure = () => {
-    showToast('signout-fail', 'ui')
+  showToast('signout-fail', 'ui')
 
-    store.user = ''
+  store.user = ''
 }
 
- module.exports = {
-     signUpSuccess,
-     signUpFailure,
-     signInSuccess,
-     signInFailure,
-     changePassSuccess,
-     changePassFailure,
-     signOutSuccess,
-     signOutFailure
- }
+module.exports = {
+  signUpSuccess,
+  signUpFailure,
+  signInSuccess,
+  signInFailure,
+  changePassSuccess,
+  changePassFailure,
+  signOutSuccess,
+  signOutFailure
+}
