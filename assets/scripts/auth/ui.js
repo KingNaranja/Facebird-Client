@@ -20,7 +20,7 @@ const signUpFailure = () => {
   showToast('signup-fail', 'ui')
 }
 
-const signInSuccess = (data) => {
+const signInSuccess = data => {
   // clear form values
   $('#sign-in')[0].reset()
 

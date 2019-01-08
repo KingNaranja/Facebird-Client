@@ -22,7 +22,7 @@ const addEvents = () => {
   $('#sign-out').on('click', onSignOut)
 }
 
-const onSignUp = function (event) {
+const onSignUp = event => {
   event.preventDefault()
 
   // get form data
@@ -33,7 +33,7 @@ const onSignUp = function (event) {
     .catch(ui.signUpFailure)
 }
 
-const onSignIn = function (event) {
+const onSignIn = event => {
   event.preventDefault()
 
   // get form data
@@ -46,7 +46,7 @@ const onSignIn = function (event) {
     .catch(ui.signInFailure)
 }
 
-const onChangePass = (event) => {
+const onChangePass = event => {
   event.preventDefault()
 
   // get form data
@@ -57,7 +57,7 @@ const onChangePass = (event) => {
     .catch(ui.changePassFailure)
 }
 
-const onSignOut = function () {
+const onSignOut = () => {
   // event.preventDefault()
 
   api.signOut()

@@ -3,7 +3,7 @@
 const config = require('../config.js')
 const userStore = require('../store.js')
 
-const createPost = function (data) {
+const createPost = data => {
   const userToken = userStore.user.token
   return $.ajax({
     url: config.apiUrl + '/posts',
@@ -41,7 +41,7 @@ const updatePost = (formData, postId) => {
   })
 }
 
-const deletePost = function (postId) {
+const deletePost = postId => {
   const userToken = userStore.user.token
   return $.ajax({
     url: config.apiUrl + `/posts/${postId}`,
@@ -59,7 +59,7 @@ const getAllMyPosts = () => {
   })
 }
 
-const getOnePost = (postId) => {
+const getOnePost = postId => {
   const userToken = userStore.user.token
   return $.ajax({
     url: config.apiUrl + `/posts/${postId}`,

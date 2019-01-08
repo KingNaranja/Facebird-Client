@@ -4,17 +4,14 @@ const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./post-api.js')
 const ui = require('./post-ui.js')
 
-const addPostEventListeners = function () {
-  // temp event listeners
-  // $('#get-all-posts').on('submit', onGetAllPosts)
-  // $('#get-all-my-posts').on('submit', onGetAllMyPosts)
+const addPostEventListeners = () => {
   // most event listeners will need to be chained onto the return of
   // posts from the Api (aka, on sign in/get all posts)
   $('#change-view :checkbox').change(changeFeedView)
   $('#new-post').on('submit', onCreatePost)
 }
 
-const addPostHandlers = function () {
+const addPostHandlers = () => {
   $('.update-post').on('click', showUpdate)
   $('.delete-post').on('click', onDeletePost)
   return ''
@@ -42,12 +39,13 @@ const changeFeedView = () => {
   }
 }
 
-const addPostUpdateButton = function () {
+const addPostUpdateButton = () => {
   $('#update-text').on('submit', onUpdatePost)
 }
 
-const showUpdate = function (event) {
+const showUpdate = event => {
   event.preventDefault()
+
   const postId = $(event.target).closest('section').data('id')
   $('#update-modal').modal('show')
   api.getOnePost(postId)
@@ -56,7 +54,7 @@ const showUpdate = function (event) {
     .catch()
 }
 
-const onCreatePost = function (event) {
+const onCreatePost = event => {
   event.preventDefault()
 
   const data = getFormFields(event.target)
@@ -67,20 +65,18 @@ const onCreatePost = function (event) {
     .catch(ui.createPostFailure)
 }
 
-const onGetLatestPost = function () {
-  if (event) { // checks if event is truthy before running prevent default
-    event.preventDefault()
-  }
+const onGetLatestPost = () => {
+  // Because Get Latest Post can be called on page load or a button click,
+  // checks if event is truthy before running prevent default
+  if (event) { event.preventDefault() }
+
   api.getLatestPost()
     .then(ui.getLatestPostSuccess)
     .catch(ui.getLatestPostFailure)
 }
 
 const onGetAllPosts = event => {
-  // event will only be truthy when onGetAllPosts is triggered by a button click
-  if (event) { // checks if event is truthy before running prevent default
-    event.preventDefault()
-  }
+  if (event) { event.preventDefault() }
 
   api.getAllPosts()
     .then(ui.getAllPostsSuccess)
@@ -107,7 +103,7 @@ const onUpdatePost = event => {
   onGetLatestPost()
 }
 
-const onDeletePost = function () {
+const onDeletePost = () => {
   event.preventDefault()
 
   const postId = $(event.target).closest('section').data('id')
@@ -119,7 +115,7 @@ const onDeletePost = function () {
   onGetLatestPost()
 }
 
-const onGetAllMyPosts = function () {
+const onGetAllMyPosts = () => {
   api.getAllMyPosts()
     .then(ui.getAllMyPostsSuccess)
     .then(addPostHandlers)

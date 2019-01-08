@@ -7,14 +7,13 @@ const allMyPostsTemplate = require('../templates/get-all-my-posts.handlebars')
 const onePostTemplate = require('../templates/get-one-post-form.handlebars')
 const myLatestPostTemplate = require('../templates/get-my-latest-post.handlebars')
 
-const createPostSuccess = function (apiData) {
+const createPostSuccess = apiData => {
   // console.log(apiData)
   showToast('createpost-pass', 'post')
-  // $('#new-post').val('')
   $('#new-post')[0].reset()
 }
 
-const createPostFailure = function (apiData) {
+const createPostFailure = apiData => {
   console.log(apiData)
   showToast('createpost-fail', 'post')
 }
@@ -33,7 +32,7 @@ const getAllPostsFailure = apiData => {
   showToast('allposts-fail', 'post')
 }
 
-const getLatestPostSuccess = function (apiData) {
+const getLatestPostSuccess = apiData => {
   // console.log(apiData)
   if (apiData) {
     const latestPost = myLatestPostTemplate({ post: apiData.post })
@@ -43,7 +42,7 @@ const getLatestPostSuccess = function (apiData) {
   return ''
 }
 
-const getLatestPostFailure = function () {
+const getLatestPostFailure = () => {
   // console.log('you failed')
   showToast('mylatestpost-fail', 'post')
 }
@@ -62,31 +61,31 @@ const updatePostFailure = apiData => {
   showToast('updatepost-fail', 'post')
 }
 
-const deletePostSuccess = function (apiData) {
+const deletePostSuccess = apiData => {
   // console.log(apiData)
   showToast('deletepost-pass', 'post')
 }
 
-const deletePostFaliure = function (apiData) {
+const deletePostFaliure = apiData => {
   // console.log(apiData)
   showToast('deletepost-fail', 'post')
 }
 
-const getAllMyPostsSuccess = function (apiData) {
+const getAllMyPostsSuccess = apiData => {
   // console.log(apiData)
-  const allMyPosts = allMyPostsTemplate({posts: apiData.posts})
+  const allMyPosts = allMyPostsTemplate({ posts: apiData.posts })
   $('#feed').html(allMyPosts)
   // showToast('allmyposts-pass', 'post')
 }
 
-const getAllMyPostsFailure = function (apiData) {
+const getAllMyPostsFailure = apiData => {
   // console.log(apiData)
   showToast('allmyposts-fail', 'post')
 }
 
-const getOnePostSuccess = function (apiData) {
+const getOnePostSuccess = apiData => {
   // console.log(apiData)
-  const modalContent = onePostTemplate({post: apiData.post})
+  const modalContent = onePostTemplate({ post: apiData.post })
   $('#update-modal-body').html(modalContent)
 }
 
