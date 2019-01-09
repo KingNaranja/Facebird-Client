@@ -2,19 +2,23 @@
 
 const showToast = require('../toastr/toasts')
 
+// assigns our handlebars template to variables
 const allPostsTemplate = require('../templates/get-all-posts.handlebars')
 const allMyPostsTemplate = require('../templates/get-all-my-posts.handlebars')
 const onePostTemplate = require('../templates/get-one-post-form.handlebars')
 const myLatestPostTemplate = require('../templates/get-my-latest-post.handlebars')
 
+// runs on a succesful create post
 const createPostSuccess = apiData => {
-  // console.log(apiData)
+  // uses toastr to tell user of a succesful create posts
+  // Look in auth/ui for a greater explanation of how toastr works
   showToast('createpost-pass', 'post')
+  // clears form data
   $('#new-post')[0].reset()
 }
 
 const createPostFailure = apiData => {
-  console.log(apiData)
+  // console.log(apiData)
   showToast('createpost-fail', 'post')
 }
 
@@ -22,7 +26,11 @@ const getAllPostsSuccess = apiData => {
   // console.log(apiData)
   // showToast('allposts-pass', 'post')
 
+  // calls the handlebars template "allPostsTemplate"
+  // with the api response data, structured in a posts object
+  // the handlebars template is a js function that can accept data as an object.
   const allThePosts = allPostsTemplate({ posts: apiData.posts })
+  // inserts the formatted template data into the DOM
   $('#feed').html(allThePosts)
   return ''
 }
@@ -34,10 +42,10 @@ const getAllPostsFailure = apiData => {
 
 const getLatestPostSuccess = apiData => {
   // console.log(apiData)
-  if (apiData) {
-    const latestPost = myLatestPostTemplate({ post: apiData.post })
-    $('#recent-post-container').html(latestPost)
-  }
+
+  const latestPost = myLatestPostTemplate({ post: apiData.post })
+  $('#recent-post-container').html(latestPost)
+
   // showToast('mylatestpost-success', 'post')
   return ''
 }

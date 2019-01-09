@@ -9,8 +9,10 @@
 const authEvents = require('./auth/events')
 const postEvents = require('./post/post-event')
 
+// Runs this function on page load
 $(() => {
-  // your JS code goes here
+  // adds event handlers with auth/events.js
   authEvents.addEvents()
+  // adds event handlers with post/post-event.js
   postEvents.addPostEventListeners()
 })

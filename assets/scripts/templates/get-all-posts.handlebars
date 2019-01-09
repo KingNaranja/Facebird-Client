@@ -1,5 +1,13 @@
-{{#each posts as |post|}}
+<!-- takes api data that's passed in. In this case 'posts' holds the data from the api -->
+<!-- For each post with the api Data,
+we will store the below HTML with the new Api Data within the returned variable -->
+<!-- post is the current iteration of the api Data -->
 
+<!-- data-id is set to the unqiue id of each post that is loaded -->
+<!-- we are also limiting the number of characters included from post.createdAt
+so that it has a more pleasing appearance. This will eventually be replaced by using moment.js
+on the backend to format the createdAt before it reaches the clent.  -->
+{{#each posts as |post|}}
   <section data-id={{post._id}} class="post">
     <div class="post-header">
       <h4>{{post.owner.nickname}}</h4>
